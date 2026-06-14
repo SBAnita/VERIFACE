@@ -2,7 +2,8 @@
 
 ## 📸 Project Interface
 <img src="http://127.0.0.1:5000/static/images/VERIFACE.PNG.png" alt="VeriFace Logo">
-<img src="https://raw.githubusercontent.com/anita/veriface/main/static/images/VERIFACE.PNG.png" alt="VeriFace Logo">
+<img src="https://raw.githubusercontent.com/anita/Veriface\VERIFACE\static\images/VERIFACE.PNG.png" alt="VeriFace Logo">
+
 
 The Digital Facial Recognition Attendance System is an advanced, automated system designed to track and manage attendance efficiently using facial recognition technology 🙂🔍. Unlike traditional methods (manual registers 📝 or RFID cards 💳), this system uses computer vision 🤖 and AI 🧠 to identify individuals in real-time ⏱️, ensuring accuracy ✅, security 🔐, and time-saving management ⏳.
 
