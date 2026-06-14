@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Attendance Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+
+  display: flex;
+  justify-content: center;   /* CENTER HORIZONTALLY */
+  align-items: flex-start;   /* TOP aligned (use center if you want vertical center) */
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f1f5ff 35%,
+    #dbeafe 60%,
+    #1e40af 100%
+  );
+
+  background-attachment: fixed;
+}
+
+    .right-panel {
+  width: 100%;
+  max-width: 1100px;   /* Slightly wider = better balance */
+  padding: 2rem;
+  margin-top: 2rem;   /* Space from top */
+  background: rgba(255,255,255,0.12);
+  border-radius: 20px;
+}
+    .brand-title {
+  margin: 0;
+  padding: 6px 16px;          /* balanced left & right */
+  
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+
+  display: inline-block;     /* keeps pill shape tight */
+  line-height: 1.2;
+}
+
+    .attendance-img {
+  width: auto !important; max-width: 100%; height: 180px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+    /* Navbar gradient */
+    .nav-gradient {
+      background: linear-gradient(90deg,#0f172a,#3b82f6);
+      margin-bottom: 1.5rem;
+      border-radius: 0.75rem;
+    }
+
+    /* Cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+    }
+    .glass-card:hover { transform: translateY(-3px); }
+
+    /* Progress bar */
+    .progress {
+      background-color: #e9ecef;
+      border-radius: 10px;
+    }
+    .progress-bar {
+      background: linear-gradient(90deg, #3b82f6, #0ea5e9);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="right-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark nav-gradient shadow-sm px-3">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold">Digital Attendance System</a>
+        <div class="d-flex">
+          <a class="btn btn-outline-light me-2" href="/add_student">Add Student</a>
+          <a class="btn btn-outline-light me-2" href="/mark_attendance">Mark Attendance</a>
+          <a class="btn btn-outline-light" href="/attendance_record">Records</a>
+        </div>
+       <h2 class="brand-title">VERIFACE</h2>
+      </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <!-- Use .container instead of container-fluid to avoid full-width stretch -->
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="card p-3 shadow-sm glass-card">
+            <h5>Quick Actions</h5>
+            <p class="small text-muted">Create student entries, capture faces, or start recognition.</p>
+            <div class="text-center my-3">
+              <img src="/static/images/bg.png" alt="Face Recognition Attendance" class="attendance-img">
+            </div>
+            <div class="d-grid gap-2">
+              <a class="btn btn-primary" href="/add_student">Add Student</a>
+              <a class="btn btn-success" href="/mark_attendance">Mark Attendance</a>
+              <a class="btn btn-warning" href="/attendance_record">View Records</a>
+              <a class="btn btn-info" href="/student_details">Student Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="card p-3 shadow-sm glass-card">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Train Model</h5>
+              <button id="trainBtn" class="btn btn-outline-primary">Start Training</button>
+            </div>
+            <div class="mt-3">
+              <div class="progress" style="height:28px;">
+                <div id="trainProgress" class="progress-bar" style="width:0%">0%</div>
+              </div>
+              <div id="trainMsg" class="mt-2 text-muted small">Model not trained yet.</div>
+            </div>
+          </div>
+
+          <div class="card p-3 shadow-sm mt-4 glass-card">
+            <h5>Attendance (Last 30 days)</h5>
+            <div class="chart-container" style="position:relative; height:320px; width:100%;">
+               <canvas id="attendanceChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="static/js/dashboard.js"></script>
+</body>
+</html>

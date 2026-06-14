@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Student Details</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+<div class="d-flex justify-content-between mb-3">
+
+    <h2>Student Details</h2>
+
+    <div>
+
+        <a href="/download_students_csv"
+           class="btn btn-success">
+            Download CSV
+        </a>
+
+        <a href="/dashboard"
+           class="btn btn-secondary">
+            Back
+        </a>
+
+    </div>
+
+</div>
+
+<input
+type="text"
+id="searchInput"
+class="form-control mb-3"
+placeholder="Search student..."
+>
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-dark">
+
+<tr>
+<th>Name</th>
+<th>Roll</th>
+<th>Reg No</th>
+<th>Class</th>
+<th>Section</th>
+<th>Created</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="studentTable">
+
+{% for s in students %}
+
+<tr>
+<td>{{ s[1] }}</td>
+<td>{{ s[2] }}</td>
+<td>{{ s[3] }}</td>
+<td>{{ s[4] }}</td>
+<td>{{ s[5] }}</td>
+<td>{{ s[6] }}</td>
+
+<td>
+
+<a
+href="/edit_student/{{ s[0] }}"
+class="btn btn-warning btn-sm">
+Edit
+</a>
+
+<a
+href="/delete_student/{{ s[0] }}"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete student?')">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+document.getElementById("searchInput")
+.addEventListener("keyup", function(){
+
+let filter =
+this.value.toLowerCase();
+
+let rows =
+document.querySelectorAll("#studentTable tr");
+
+rows.forEach(row=>{
+
+let text =
+row.innerText.toLowerCase();
+
+row.style.display =
+text.includes(filter)
+? ""
+: "none";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

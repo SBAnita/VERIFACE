@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Edit Student</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+<h2>Edit Student</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Name</label>
+<input
+type="text"
+name="name"
+class="form-control"
+value="{{ student[1] }}">
+</div>
+
+<div class="mb-3">
+<label>Roll</label>
+<input
+type="text"
+name="roll"
+class="form-control"
+value="{{ student[2] }}">
+</div>
+
+<div class="mb-3">
+<label>Registration No</label>
+<input
+type="text"
+name="reg_no"
+class="form-control"
+value="{{ student[3] }}">
+</div>
+
+<div class="mb-3">
+<label>Class</label>
+<input
+type="text"
+name="class"
+class="form-control"
+value="{{ student[4] }}">
+</div>
+
+<div class="mb-3">
+<label>Section</label>
+<input
+type="text"
+name="section"
+class="form-control"
+value="{{ student[5] }}">
+</div>
+
+<button class="btn btn-success">
+Update
+</button>
+
+<a
+href="/student_details"
+class="btn btn-secondary">
+Cancel
+</a>
+
+</form>
+
+</div>
+
+</body>
+</html>
