@@ -1,6 +1,6 @@
 # Digital-Facial-Recognisation-Attendance-System
 
-<img width="1919" height="993" alt="image" src="http://127.0.0.1:5000/" />
+<img src="veriface.png" width="900">
 
 The Digital Facial Recognition Attendance System is an advanced, automated system designed to track and manage attendance efficiently using facial recognition technology 🙂🔍. Unlike traditional methods (manual registers 📝 or RFID cards 💳), this system uses computer vision 🤖 and AI 🧠 to identify individuals in real-time ⏱️, ensuring accuracy ✅, security 🔐, and time-saving management ⏳.
 
